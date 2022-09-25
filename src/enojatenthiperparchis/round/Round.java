@@ -27,7 +27,7 @@ public class Round {
         }
         tabla.setPlayers(players);
         tabla.innit();
-        dado=new Dado(all,all.getScreenWidth()/2,all.getScreenHeight()/2,0,state,tabla);
+        dado=new Dado(all,all.getTotalWidth()/2,all.getTotalHeight()/2,0,state,tabla);
     }
 
     public State getState() {
