@@ -1,0 +1,5 @@
+incluir imagenes en /res con los nombres:
+-sprites.png
+-playDice.png
+-credits.png
+reemplazar "path" en /gfx/Sprites.java
