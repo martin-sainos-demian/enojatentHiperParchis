@@ -13,6 +13,7 @@ public class Sprites {
     public static BufferedImage dice[];
     public static BufferedImage canicas[];
     public static BufferedImage credits;
+    public static BufferedImage intro;
     
     public Sprites(){
         Divide sheet = new Divide(ImageLoader.loadImage(path+"sprites.png"));
@@ -55,6 +56,7 @@ public class Sprites {
         
         Divide creditsSheet = new Divide(ImageLoader.loadImage(path+"credits.png"));
         credits=creditsSheet.crop(0, 0, 128, 128);
+        intro=ImageLoader.loadImage(path+"intro.png");
     }
     
     public static int getDefaultWidth(){
