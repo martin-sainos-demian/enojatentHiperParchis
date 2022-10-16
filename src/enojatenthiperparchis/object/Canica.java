@@ -7,14 +7,16 @@ import java.awt.Graphics;
 
 public class Canica extends Thing {
     static Player player;
-    static int playerId;
+    public static int playerId;
+    public int casillaX=0,casillaY=0;
     
     public Canica(All all, float x, float y, int id, Player player) {
         super(all, x, y, id, player.getState());
         this.player=player;
         clickable=true;
         canAssign=true;
-        playerId=player.id;
+        final int playId=player.id;
+        playerId=playId;
         sprite=all.sprites().canicas[player.id];
     }
 

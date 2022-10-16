@@ -13,7 +13,7 @@ public class Round {
     private All all;
     public Table tabla;
     Player players[];
-    Dado dado;
+    public Dado dado;
     
     
     public Round(All all,int playerNumber, int espacios, State state){
@@ -50,5 +50,11 @@ public class Round {
     
     public Player getPlayerById(int id){
         return players[id];
+    }
+    
+    public void setDice(float x, float y, int num){
+        dado.x=x;
+        dado.y=y;
+        dado.number=num;
     }
 }

@@ -16,8 +16,8 @@ import java.awt.Graphics;
 public class Dado extends Thing{
     
     public int number=6;
-    boolean clicked=false, spin=false;
-    int angle=0;
+    public boolean clicked=false, spin=false;
+    public int angle=0;
     boolean goingLeft=false,goingUp=false;
     private Table tabla;
     int moveX=1,moveY=1;

@@ -13,10 +13,11 @@ package enojatenthiperparchis.sockets;
 import java.net.*;
 import java.io.*;
 
-class Leer extends Thread      // Creamos Hilo heredando de la clase Thread
+public class In extends Thread      // Creamos Hilo heredando de la clase Thread
 	{
 	Socket socket;
-	Leer( Socket socket)           // Recibe un objeto Socket para indicar qué Socket esta ligado a este proceso
+        String msg="";
+	public In( Socket socket)           // Recibe un objeto Socket para indicar qué Socket esta ligado a este proceso
 		{
 		this.socket=socket;
 		start();   //Iniciar el proceso
@@ -26,11 +27,18 @@ class Leer extends Thread      // Creamos Hilo heredando de la clase Thread
 			while(true){     //bucle infinito para lectura
 				InputStream aux = socket.getInputStream();
 				DataInputStream flujo = new DataInputStream( aux );
-				System.out.println(flujo.readUTF() );
+                                msg=flujo.readUTF();
+				System.out.println(msg);
+                                
 				}
 			}
 		catch(Exception e){
 			System.out.println("Error");
 			}
 		}
+
+    public String getMsg() {
+        return msg;
+    }
+        
 }

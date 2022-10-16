@@ -1,4 +1,4 @@
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -17,6 +17,7 @@ public class Casilla extends Thing {
     public Canica canica;
     public boolean hueco=false;
     Table table;
+    public Player player;
     
     public Casilla(All all, float x, float y, int id, Table table){
         super(all, x, y, id, table.getState());
@@ -69,15 +70,16 @@ public class Casilla extends Thing {
         }
     }
     
-    public void setCanica(Canica canica){
+    public void setCanica(Canica canicanew){
         if(hueco){
-            this.canica=canica;
+            canica=canicanew;
             canica.assigned=true;
             canica.x=x;
             canica.y=y;
-        }
-        if(canica==null){
-            this.canica.assigned=false;
+            afterSetCanica();
         }
     }
+    
+    public void afterSetCanica(){};
+    
 }

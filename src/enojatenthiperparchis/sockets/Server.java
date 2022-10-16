@@ -11,7 +11,7 @@ import java.io.*;
 import java.util.*;
 
 public class Server{       	
-   AtiendeClientes cte;	// Objeto para hacer uso del proceso de lectura y escritura
+   ServerHost cte;	// Objeto para hacer uso del proceso de lectura y escritura
    ArrayList<Socket> listaCliente=new ArrayList();	    
    public Server()    
       {        
@@ -23,15 +23,12 @@ public class Server{
                   cliente = ss.accept();
                   System.out.println("Conexión exitosa");
                   listaCliente.add(cliente);				
-                  cte = new AtiendeClientes(listaCliente,cliente); //Creación de un proceso para intercambio de info con cada Cliente que se conecte
+                  cte = new ServerHost(listaCliente,cliente); //Creación de un proceso para intercambio de info con cada Cliente que se conecte
                   }	     
             //ss.close();        
             }        
            catch (Exception e){    
                e.printStackTrace();       
            }    
-     }    
-     public static void main (String [] args)    
-            {        new Server(); 
-            }
      }
+}

@@ -17,20 +17,21 @@ import java.util.ArrayList;
  *
  * @author KIKA
  */
-public class AtiendeClientes extends Thread { //Creamos proceso
-	Socket socket;
-	String mensaje;
-	ArrayList<Socket> listaCliente;
-       int cliente;
+public class ServerHost extends Thread { //Creamos proceso
+    public Socket socket;
+    String mensaje;
+    public ArrayList<Socket> listaCliente;
+    int cliente;
+    private boolean end=false;
        
-	AtiendeClientes(ArrayList<Socket> lista, Socket socket)   // Recibe el ArrayList de Sockets Cliente que actualmente se están atendiendo
+    public ServerHost(ArrayList<Socket> lista, Socket socket)   // Recibe el ArrayList de Sockets Cliente que actualmente se están atendiendo
 		{
 		this.listaCliente = lista;
 		this.socket=socket;
 		start();
 		}
 	public void run(){
-		while(true){   // Bucle infinito para lectura y escritura
+		while(!end){   // Bucle infinito para lectura y escritura
 	  	    try {
 			InputStream is = socket.getInputStream(); // Se abre flujo de lectura
 			DataInputStream flujo = new DataInputStream(is);
@@ -42,7 +43,13 @@ public class AtiendeClientes extends Thread { //Creamos proceso
 				flujoDOS.writeUTF(mensaje);
 				}
 		          }
-		      catch(Exception e) { System.out.println("Error de comunicacion"+e);   }
+		      catch(Exception e) { System.out.println("Error de comunicacion"+e);
+                      end();
 		    }
 		}
+        
 	}
+        public void end(){
+            end=true;
+        }
+}

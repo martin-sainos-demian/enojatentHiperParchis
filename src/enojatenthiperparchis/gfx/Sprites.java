@@ -5,9 +5,9 @@ import java.awt.image.BufferedImage;
 
 public class Sprites {
     private static final int width=32 , height=32;
-    private String path="res/imgHiperPlus/";
+    public static String path="res/imgHiperPlus/";
     
-    public static BufferedImage mouse, botonDef;
+    public static BufferedImage mouse, botonDef, btnServer, btnClient;
     public static BufferedImage boulder;
     public static BufferedImage hueco, huecoFront[], huecoBack[], sinHueco;
     public static BufferedImage dice[];
@@ -21,6 +21,9 @@ public class Sprites {
         boulder=sheet.crop(0, 0, width, height);
         mouse=sheet.crop(width, 0, width, height);
         botonDef=sheet.crop(0, height, width*2, height);
+        
+        btnServer=sheet.crop(width*4, height*2, width*2, height);
+        btnClient=sheet.crop(width*4, height*3, width*2, height);
         
         huecoFront=new BufferedImage[5];
         huecoBack=new BufferedImage[5];
@@ -57,6 +60,7 @@ public class Sprites {
         Divide creditsSheet = new Divide(ImageLoader.loadImage(path+"credits.png"));
         credits=creditsSheet.crop(0, 0, 128, 128);
         intro=ImageLoader.loadImage(path+"intro.png");
+        
     }
     
     public static int getDefaultWidth(){

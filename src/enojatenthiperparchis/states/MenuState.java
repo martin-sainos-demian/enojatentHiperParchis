@@ -18,7 +18,7 @@ public class MenuState extends State {
         super(game);
         all=game.getAll();
         mouse=new Mouse(all,0,this, game.mouseInput);
-        botones=new Boton[2];
+        botones=new Boton[4];
         botones[0]=new Boton(all
                 ,0,0,all.getDefaultWidth()*2
                 ,all.getDefaultHeight(),1,this,all.sprites().botonDef)
@@ -28,6 +28,22 @@ public class MenuState extends State {
                     game.nextState();
                 }};
         botones[1]=new Boton(all, 64, 64, 128, 128, 2, this, all.sprites().credits);
+        botones[2]=new Boton(all
+                ,192,128,all.getDefaultWidth()*2
+                ,all.getDefaultHeight(),3,this,all.sprites().btnServer)
+                {@Override
+                public void clicked(){
+                    System.out.println("uwu server");
+                    game.setState(3);
+                }};
+        botones[3]=new Boton(all
+                ,192,256,all.getDefaultWidth()*2
+                ,all.getDefaultHeight(),3,this,all.sprites().btnClient)
+                {@Override
+                public void clicked(){
+                    System.out.println("uwu server");
+                    game.setState(4);
+                }};
         width=0;
         height=0;
         for(Boton b:botones){

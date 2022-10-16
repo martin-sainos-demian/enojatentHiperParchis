@@ -5,12 +5,19 @@
             <url>src/enojatenthiperparchis/states/MenuState.java</url>
             <bookmark id="1">
                 <name/>
-                <line>47</line>
+                <line>55</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/PC/Documents/THiNGS/Code/batiz/enojatentHiperParchis/src/enojatenthiperparchis/states/ServerState.java</file>
+            <file>file:/C:/Users/PC/Documents/THiNGS/Code/batiz/enojatentHiperParchis/src/enojatenthiperparchis/states/MenuState.java</file>
+            <file>file:/C:/Users/PC/Documents/THiNGS/Code/batiz/enojatentHiperParchis/src/enojatenthiperparchis/sockets/Client.java</file>
+            <file>file:/C:/Users/PC/Documents/THiNGS/Code/batiz/enojatentHiperParchis/src/enojatenthiperparchis/sockets/In.java</file>
+            <file>file:/C:/Users/PC/Documents/THiNGS/Code/batiz/enojatentHiperParchis/src/enojatenthiperparchis/gfx/Sprites.java</file>
+            <file>file:/C:/Users/PC/Documents/THiNGS/Code/batiz/enojatentHiperParchis/src/enojatenthiperparchis/Game.java</file>
+        </group>
     </open-files>
 </project-private>

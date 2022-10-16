@@ -121,6 +121,12 @@ public class Game {
             case 2:
                 state=new GameState(this);
                 break;
+            case 3:
+                state=new ServerState(this);
+                break;
+            case 4:
+                state=new ClientNameState(this);
+                break;
             default:
                 currentStateId=0;
                 state=new MenuState(this);
@@ -130,6 +136,9 @@ public class Game {
         if(!def){
             currentStateId=id;
         }
+    }
+    public void setState(State state){
+        this.state=state;
     }
 
     public static All getAll() {

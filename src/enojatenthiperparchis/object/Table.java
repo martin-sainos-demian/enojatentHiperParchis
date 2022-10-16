@@ -8,9 +8,9 @@ import java.awt.Graphics;
 
 public class Table extends Thing{
 
-    Casilla casillas[][];
+    public Casilla casillas[][];
     int esp;
-    public Player players[];
+    public Player[] players;
     public int width=0, height=0;
     Round round;
     
@@ -51,7 +51,7 @@ public class Table extends Thing{
             casillas[i][esp+2].hueco=true;
             casillas[esp+2][i].hueco=true;
         }
-        
+        int idCanica=0;
         if(players.length>0){
         casillas[esp][1]=new CasillaInicial(all,esp*all.getDefaultWidth()
                 ,all.getDefaultHeight(),casillas[esp][1].id,this,players[0]);
@@ -65,11 +65,12 @@ public class Table extends Thing{
             Canica bolsa[]=new Canica[esp];
             for(int i=0;i<esp;i++){
                 if(i%2==0){
-                    bolsa[i]=new Canica(all,(i+2)*all.getDefaultWidth()/2,all.getDefaultHeight(),i,players[0]);
+                    bolsa[i]=new Canica(all,(i+2)*all.getDefaultWidth()/2,all.getDefaultHeight(),idCanica,players[0]);
                 }
                 else{
-                    bolsa[i]=new Canica(all,(i+1)*all.getDefaultWidth()/2,2*all.getDefaultHeight(),i,players[0]);
+                    bolsa[i]=new Canica(all,(i+1)*all.getDefaultWidth()/2,2*all.getDefaultHeight(),idCanica,players[0]);
                 }
+                idCanica++;
             }
             players[0].setBolsa(bolsa);
         }
@@ -86,11 +87,12 @@ public class Table extends Thing{
             Canica bolsa[]=new Canica[esp];
             for(int i=0;i<esp;i++){
                 if(i%2==0){
-                    bolsa[i]=new Canica(all,(casillas.length-2)*all.getDefaultWidth(),(i+2)*all.getDefaultHeight()/2,i,players[1]);
+                    bolsa[i]=new Canica(all,(casillas.length-2)*all.getDefaultWidth(),(i+2)*all.getDefaultHeight()/2,idCanica,players[1]);
                 }
                 else{
-                    bolsa[i]=new Canica(all,(casillas.length-3)*all.getDefaultWidth(),(i+1)*all.getDefaultHeight()/2,i,players[1]);
+                    bolsa[i]=new Canica(all,(casillas.length-3)*all.getDefaultWidth(),(i+1)*all.getDefaultHeight()/2,idCanica,players[1]);
                 }
+                idCanica++;
             }
             players[1].setBolsa(bolsa);
         }
@@ -107,11 +109,12 @@ public class Table extends Thing{
             Canica bolsa[]=new Canica[esp];
             for(int i=0;i<esp;i++){
                 if(i%2==0){
-                    bolsa[i]=new Canica(all,(casillas.length-(i/2)-2)*all.getDefaultWidth(),(casillas[0].length-2)*all.getDefaultHeight(),i,players[2]);
+                    bolsa[i]=new Canica(all,(casillas.length-(i/2)-2)*all.getDefaultWidth(),(casillas[0].length-2)*all.getDefaultHeight(),idCanica,players[2]);
                 }
                 else{
-                    bolsa[i]=new Canica(all,(casillas.length-(i/2)-2)*all.getDefaultWidth(),(casillas[0].length-3)*all.getDefaultHeight(),i,players[2]);
+                    bolsa[i]=new Canica(all,(casillas.length-(i/2)-2)*all.getDefaultWidth(),(casillas[0].length-3)*all.getDefaultHeight(),idCanica,players[2]);
                 }
+                idCanica++;
             }
             players[2].setBolsa(bolsa);
         }
@@ -139,6 +142,29 @@ public class Table extends Thing{
                             y.setCanica(c);
                             c.x=y.x;
                             c.y=y.y;
+                        }
+                    }
+                }
+                c.setPlayer(round.getPlayerById(p.id));
+                c.playerId=p.id;
+            }
+        }
+    }
+
+    public void settleCanicasStrict(){
+        for(Casilla[] x:casillas){
+            for(Casilla y:x){
+                y.canica=null;
+            }
+        }
+        for(Player p:players){
+            for(Canica c:p.getBolsa()){
+                c.assigned=false;
+                for(Casilla[] x:casillas){
+                    for(Casilla y:x){
+                        if(y.hueco&&y.canica==null
+                                &&y.y==c.y&&y.x==c.x){
+                            y.setCanica(c);
                         }
                     }
                 }
@@ -198,5 +224,17 @@ public class Table extends Thing{
     }
     public void setPlayers(Player[] players) {
         this.players=players;
+    }
+    public void setCanica(int id, float x, float y,boolean ass){
+        for(Player p:players){
+            for(Canica c:p.bolsa){
+                if(c.id==id){
+                    c.x=x;
+                    c.y=y;
+                    c.assigned=ass;
+                }
+            }
+        }
+        settleCanicasStrict();
     }
 }
