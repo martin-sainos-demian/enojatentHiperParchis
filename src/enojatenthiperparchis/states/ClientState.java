@@ -55,7 +55,7 @@ public class ClientState extends State{
                             @Override
                             public void setCanica(Canica canica){
                                 super.setCanica(canica);
-                                outThread.write("set");
+                                outThread.write("set█"+canica.id+"█x█"+canica.x+"█y█"+canica.y+"█assigned█"+canica.assigned);
                             }
                         };
                     }else{
