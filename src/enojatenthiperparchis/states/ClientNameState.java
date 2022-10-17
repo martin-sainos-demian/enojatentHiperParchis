@@ -22,19 +22,19 @@ public class ClientNameState extends State{
         inText=new InputText(all, name.x+48, 32, 0, this, all.fonts().sotn,game.keyInput){
             @Override
             public void enter(){
-                if(stateNum==0){
+                if(stateNum==0&&!text.equals("")){
                     nameTxt.setText(text);
                     y+=64;
                     text="";
                     font=all.fonts().sotnNums;
                     stateNum++;
                 }
-                if(stateNum==2){
-                    game.setState(new ClientState(game,nameTxt.text,text));
-                }
-                if(stateNum==1){
+                if(stateNum==1&&!text.equals("")){
                     ready.setText("READY");
                     stateNum++;
+                }
+                if(stateNum==2){
+                    game.setState(new ClientState(game,nameTxt.text,text));
                 }
             }
         };

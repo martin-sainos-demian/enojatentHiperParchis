@@ -33,6 +33,8 @@ public class InputText extends DisplayText{
                 String letter=KeyEvent.getKeyText(i);
                 if(i==KeyEvent.VK_PERIOD)
                     letter=".";
+                if(i==KeyEvent.VK_SPACE)
+                    letter=" ";
                 System.out.println(letter);
                 if(font.get(letter)!=null){
                     text+=letter;

@@ -45,7 +45,7 @@ public class Out
         try{
             os= socket.getOutputStream();
             flujoDOS = new DataOutputStream(os);
-            flujoDOS.writeUTF(name+" █msg: █"+msg);
+            flujoDOS.writeUTF(name+"█msg: █"+msg);
         }
         catch(Exception e){
             System.out.println("Error");

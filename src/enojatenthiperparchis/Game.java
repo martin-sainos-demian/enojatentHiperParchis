@@ -147,7 +147,7 @@ public class Game {
         }
     }
     public void setState(State state){
-        state.stop();
+        this.state.stop();
         this.state=state;
     }
 

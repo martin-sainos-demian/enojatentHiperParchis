@@ -8,6 +8,8 @@ import enojatenthiperparchis.object.Casilla;
 import enojatenthiperparchis.object.CasillaInicial;
 import enojatenthiperparchis.object.Dado;
 import enojatenthiperparchis.object.Mouse;
+import enojatenthiperparchis.object.text.DisplayText;
+import enojatenthiperparchis.object.text.InputText;
 import enojatenthiperparchis.round.Round;
 import enojatenthiperparchis.sockets.In;
 import enojatenthiperparchis.sockets.Out;
@@ -28,12 +30,18 @@ public class ClientState extends State{
     In inThread;
     Socket skCliente;
     
+    DisplayText outText;
+    InputText inText;
+    String outMsg="a";
+    
     String[] lastMsg;
     
     public ClientState(Game game, String name,String ip){
         super(game);
         this.name=name;
-        lastMsg="a".split("");
+        lastMsg="".split("");
+        
+        outText=new DisplayText(all,0,0,0,this,"",all.fonts().sotn);
         	      
         try{             
             skCliente = new Socket (ip, 5000);  						
@@ -92,6 +100,14 @@ public class ClientState extends State{
             };
             
             outThread.write("connecting");
+            inText=new InputText(all,0,160
+            ,1,this,all.fonts().sotn,game.keyInput){
+                @Override
+                public void enter(){
+                    outThread.write("send█"+text);
+                    text="";
+                }
+            };
         }         
       catch (Exception e)    {  
           e.printStackTrace();      
@@ -102,6 +118,8 @@ public class ClientState extends State{
     public void tick() {
         round.tick();
         mouse.tick();
+        outText.tick();
+        inText.tick();
         String ramLastMsg=toString(lastMsg);
         lastMsg=inThread.getMsg().split("█");
         
@@ -125,6 +143,12 @@ public class ClientState extends State{
                     }
                 }
             }
+            if(lastMsg.length>3){
+                if(lastMsg[2].equals("send")&&!lastMsg[0].equals(name)){
+                    outMsg=lastMsg[0]+" : "+lastMsg[3];
+                    outText.setText(outMsg);
+                }
+            }
         }
     }
 
@@ -132,6 +156,8 @@ public class ClientState extends State{
     public void render(Graphics g) {
         round.render(g);
         mouse.render(g);
+        outText.render(g);
+        inText.render(g);
     }
     
     public String toString(String[] ask){

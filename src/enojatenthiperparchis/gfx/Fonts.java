@@ -19,7 +19,7 @@ public class Fonts {
         init();
     }
     private void init(){
-        sotn = loadFont("sotn.png","ABCDEFGHIJKLMNOPQRSTUVWXYZ&!-.'?+=:*()",16,16);
+        sotn = loadFont("sotn.png","ABCDEFGHIJKLMNOPQRSTUVWXYZ&!-.'?+=:*() ",16,16);
         sotnNums = loadFont("sotnNums.png","0123456789.",8,8);
     }
     private HashMap<String, BufferedImage> loadFont(String path, String letters, int width, int height){
