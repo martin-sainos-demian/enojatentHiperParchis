@@ -6,6 +6,7 @@ package enojatenthiperparchis;
 
 import enojatenthiperparchis.gfx.Audio;
 import enojatenthiperparchis.gfx.Camara;
+import enojatenthiperparchis.gfx.Fonts;
 import enojatenthiperparchis.gfx.Sprites;
 import enojatenthiperparchis.input.MouseInput;
 
@@ -60,5 +61,8 @@ public class All {
     }
     public static Audio audio(){
         return game.audio;
+    }
+    public static Fonts fonts(){
+        return game.fonts;
     }
 }

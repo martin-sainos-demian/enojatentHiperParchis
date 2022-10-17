@@ -30,13 +30,13 @@ public class ClientState extends State{
     
     String[] lastMsg;
     
-    public ClientState(Game game, String name){
+    public ClientState(Game game, String name,String ip){
         super(game);
         this.name=name;
         lastMsg="a".split("");
         	      
         try{             
-            skCliente = new Socket ("localhost", 5000);  						
+            skCliente = new Socket (ip, 5000);  						
             outThread =new Out(skCliente,name);
             inThread= new In(skCliente);
 

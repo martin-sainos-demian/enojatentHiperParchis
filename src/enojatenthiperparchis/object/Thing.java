@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
 public abstract class Thing {
     public float x, y;
     public int id;
-    State state;
+    public State state;
     All all;
     public Rectangle hitbox;
     BufferedImage sprite;

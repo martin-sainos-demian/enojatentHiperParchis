@@ -5,19 +5,17 @@
             <url>src/enojatenthiperparchis/states/MenuState.java</url>
             <bookmark id="1">
                 <name/>
-                <line>55</line>
+                <line>63</line>
                 <key/>
             </bookmark>
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/PC/Documents/THiNGS/Code/batiz/enojatentHiperParchis/src/enojatenthiperparchis/states/ServerState.java</file>
-            <file>file:/C:/Users/PC/Documents/THiNGS/Code/batiz/enojatentHiperParchis/src/enojatenthiperparchis/states/MenuState.java</file>
-            <file>file:/C:/Users/PC/Documents/THiNGS/Code/batiz/enojatentHiperParchis/src/enojatenthiperparchis/sockets/Client.java</file>
-            <file>file:/C:/Users/PC/Documents/THiNGS/Code/batiz/enojatentHiperParchis/src/enojatenthiperparchis/sockets/In.java</file>
-            <file>file:/C:/Users/PC/Documents/THiNGS/Code/batiz/enojatentHiperParchis/src/enojatenthiperparchis/gfx/Sprites.java</file>
-            <file>file:/C:/Users/PC/Documents/THiNGS/Code/batiz/enojatentHiperParchis/src/enojatenthiperparchis/Game.java</file>
+            <file>file:/C:/Users/PC/Documents/THiNGS/Code/batiz/enojatentHiperParchis/src/enojatenthiperparchis/object/text/DisplayText.java</file>
+            <file>file:/C:/Users/PC/Documents/THiNGS/Code/batiz/enojatentHiperParchis/src/enojatenthiperparchis/states/ClientState.java</file>
+            <file>file:/C:/Users/PC/Documents/THiNGS/Code/batiz/enojatentHiperParchis/src/enojatenthiperparchis/states/ClientNameState.java</file>
+            <file>file:/C:/Users/PC/Documents/THiNGS/Code/batiz/enojatentHiperParchis/src/enojatenthiperparchis/object/text/InputText.java</file>
         </group>
     </open-files>
 </project-private>

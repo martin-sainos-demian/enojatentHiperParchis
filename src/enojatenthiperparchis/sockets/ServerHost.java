@@ -19,7 +19,7 @@ import java.util.ArrayList;
  */
 public class ServerHost extends Thread { //Creamos proceso
     public Socket socket;
-    String mensaje;
+    public String mensaje="";
     public ArrayList<Socket> listaCliente;
     int cliente;
     private boolean end=false;

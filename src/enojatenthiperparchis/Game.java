@@ -2,6 +2,7 @@
 package enojatenthiperparchis;
 
 import enojatenthiperparchis.gfx.*;
+import enojatenthiperparchis.input.KeyInput;
 import enojatenthiperparchis.input.MouseInput;
 import enojatenthiperparchis.states.*;
 import java.awt.Color;
@@ -19,9 +20,11 @@ public class Game {
     public static int currentStateId;
     static Sprites sprites;
     public MouseInput mouseInput;
+    public static KeyInput keyInput;
     static All all;
     public static Camara camara;
     static Audio audio;
+    static Fonts fonts;
     
     static boolean running=false;
     
@@ -31,7 +34,9 @@ public class Game {
         this.height=height;
         
         mouseInput=new MouseInput();
+        keyInput=new KeyInput();
         display=new Display(titulo,width,height);
+	display.getFrame().addKeyListener(keyInput);
         display.getFrame().addMouseListener(mouseInput);
         display.getFrame().addMouseMotionListener(mouseInput);
         display.getCanvas().addMouseListener(mouseInput);
@@ -44,6 +49,7 @@ public class Game {
         camara=new Camara(all);
         currentStateId=0;
         audio=new Audio();
+        fonts=new Fonts();
         setState(currentStateId);
     }
     public static void run(){
@@ -60,6 +66,7 @@ public class Game {
     }
     
     public static void tick(){
+	keyInput.tick();
         if(state!=null){
             state.tick();
         }
