@@ -117,6 +117,8 @@ public class Game {
         setState(currentStateId+1);
     }
     public void setState(int id){
+        if(state!=null)
+            state.stop();
         boolean def=false;
         switch(id){
             case 0:
@@ -145,6 +147,7 @@ public class Game {
         }
     }
     public void setState(State state){
+        state.stop();
         this.state=state;
     }
 

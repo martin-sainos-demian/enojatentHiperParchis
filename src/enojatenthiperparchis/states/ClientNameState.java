@@ -17,6 +17,7 @@ public class ClientNameState extends State{
     public ClientNameState(Game game){
         super(game);
         All all=game.getAll();
+        audio.loop("pls name.wav");
         name=new DisplayText(all, 50, 32, 0, this,"+=:", all.fonts().sotn);
         inText=new InputText(all, name.x+48, 32, 0, this, all.fonts().sotn,game.keyInput){
             @Override

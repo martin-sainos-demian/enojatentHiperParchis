@@ -36,7 +36,6 @@ public class Fonts {
             for(int y=0;y<h;y++){
                 if(x+(y*w)>=chars.length)
                     break;
-                System.out.println("x "+x+" y "+x);
                 BufferedImage img=sheet.crop(width*x, height*y, width, height);
                 map.put(chars[x+(y*w)], img);
             }

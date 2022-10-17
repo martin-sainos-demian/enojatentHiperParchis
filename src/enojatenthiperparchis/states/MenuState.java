@@ -18,6 +18,7 @@ public class MenuState extends State {
         super(game);
         all=game.getAll();
         mouse=new Mouse(all,0,this, game.mouseInput);
+        audio.loop("megapax.wav");
         botones=new Boton[4];
         botones[0]=new Boton(all
                 ,0,0,all.getDefaultWidth()*2

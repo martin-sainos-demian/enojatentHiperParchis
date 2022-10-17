@@ -21,7 +21,7 @@ public class Audio {
                 clip.open(audioInput);
                 clip.start();
             }else{
-                System.out.println("Couldn't find Music file");
+                System.out.println("Couldn't find Music file "+musicLoc);
             }
         }catch(Exception ex){
             ex.printStackTrace();

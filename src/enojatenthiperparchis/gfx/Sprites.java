@@ -14,6 +14,7 @@ public class Sprites {
     public static BufferedImage canicas[];
     public static BufferedImage credits;
     public static BufferedImage intro;
+    public static BufferedImage moon,moonRing;
     
     public Sprites(){
         Divide sheet = new Divide(ImageLoader.loadImage(path+"sprites.png"));
@@ -56,6 +57,9 @@ public class Sprites {
         canicas[1]=sheet.crop(width, height*3, width, height);
         canicas[2]=sheet.crop(width*2, height*3, width, height);
         canicas[3]=sheet.crop(width*3, height*3, width, height);
+        
+        moon=sheet.crop(0, height*4, width, height);
+        moonRing=sheet.crop(width, height*4, width, height);
         
         Divide creditsSheet = new Divide(ImageLoader.loadImage(path+"credits.png"));
         credits=creditsSheet.crop(0, 0, 128, 128);
