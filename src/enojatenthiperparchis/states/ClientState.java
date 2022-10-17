@@ -136,7 +136,7 @@ public class ClientState extends State{
         
         if(!toString(lastMsg).equals(ramLastMsg)){
             if(lastMsg.length>2){
-                if(lastMsg[2].equals("set")&&lastMsg.length>8){
+                if(lastMsg[2].equals("set")&&lastMsg.length>8&&!lastMsg[0].equals(name)){
                     if(lastMsg[4].equals("x")&&lastMsg[6].equals("y")&&lastMsg[8].equals("assigned")){
                         int id=Integer.parseInt(lastMsg[3]);
                         float newX=Float.parseFloat(lastMsg[5]);
