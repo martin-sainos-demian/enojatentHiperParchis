@@ -23,6 +23,8 @@ public class InputText extends DisplayText{
         if(keys.keyJustPressed(KeyEvent.VK_ENTER)){
             enter();
         }
+        if(keys.keyJustPressed(KeyEvent.VK_ESCAPE))
+            esc();
         if(keys.keyJustPressed(KeyEvent.VK_BACK_SPACE)){
             if(text.length()>0){
                 text=text.substring(0, text.length()-1);
@@ -43,4 +45,5 @@ public class InputText extends DisplayText{
         }
     }
     public void enter(){}
+    public void esc(){}
 }

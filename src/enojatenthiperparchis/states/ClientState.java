@@ -30,9 +30,11 @@ public class ClientState extends State{
     In inThread;
     Socket skCliente;
     
-    DisplayText outText;
+    DisplayText outText,exit;
     InputText inText;
     String outMsg="a";
+    
+    boolean menu=false;
     
     String[] lastMsg;
     
@@ -42,6 +44,7 @@ public class ClientState extends State{
         lastMsg="".split("");
         
         outText=new DisplayText(all,0,0,0,this,"",all.fonts().sotn);
+        exit=new DisplayText(all,all.getScreenWidth()/2,all.getScreenHeight()/2,0,this,"EXIT?",all.fonts().sotn);
         	      
         try{             
             skCliente = new Socket (ip, 5000);  						
@@ -104,8 +107,16 @@ public class ClientState extends State{
             ,1,this,all.fonts().sotn,game.keyInput){
                 @Override
                 public void enter(){
-                    outThread.write("send█"+text);
-                    text="";
+                    if(!menu){
+                        outThread.write("send█"+text);
+                        text="";
+                    }else{
+                        game.setState(1);
+                    }
+                }
+                @Override
+                public void esc(){
+                    menu=!menu;
                 }
             };
         }         
@@ -157,7 +168,10 @@ public class ClientState extends State{
         round.render(g);
         mouse.render(g);
         outText.render(g);
-        inText.render(g);
+        if(!menu)
+            inText.render(g);
+        else
+            exit.render(g);
     }
     
     public String toString(String[] ask){
@@ -172,8 +186,8 @@ public class ClientState extends State{
     @Override
     public void stop(){
         try {
-            super.stop();
             skCliente.close();
+            super.stop();
         }catch (Exception e){  
           e.printStackTrace();      
         }

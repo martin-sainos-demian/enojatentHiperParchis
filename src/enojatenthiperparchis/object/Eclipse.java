@@ -27,28 +27,31 @@ public class Eclipse extends Boton{
         super.tick();
         if(timmer>0){
             timmer--;
-            moonX+=step;
+            if(timmer%100==0&!completed)
+                moonX+=step;
         }
         if(!completed){
-            if(moonX>=moonOffX){
+            if(moonX>=moonOffX-2){
                 completed=true;
                 completed();
             }
         }
-        if(timmer==1)
+        if(timmer==1){
             timmerOff();
+            moonX=0;
+        }
     }
     
     @Override
     public void clicked(){
-        timmer=128;
+        timmer=12800;
         completed=false;
     }
     
     @Override
     public void render(Graphics g){
-        g.drawImage(moon[0],(int)x+moonOffX,(int)y,null);
-        g.drawImage(moon[1],(int)x+moonX,(int)y,null);
+        g.drawImage(moon[1],(int)x+moonOffX,(int)y,null);
+        g.drawImage(moon[0],(int)x+moonX,(int)y,null);
     }
     
     public void completed(){};
