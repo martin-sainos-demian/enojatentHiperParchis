@@ -10,3 +10,7 @@ Instalar paquetes de texturas
 	-playDice.png
 	-credits.png
 2.reemplazar "path" en /gfx/Sprites.java
+
+Notas
+-De preferencia no cambiar las fuentes de letras
+(si lo quieres hacer ve como se declara en la clase Fonts)

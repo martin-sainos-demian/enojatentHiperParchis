@@ -100,7 +100,7 @@ public class ClientState extends State{
             };
             
             outThread.write("connecting");
-            inText=new InputText(all,0,160
+            inText=new InputText(all,0,all.getScreenHeight()-all.fonts().sotn.get("A").getHeight()-39
             ,1,this,all.fonts().sotn,game.keyInput){
                 @Override
                 public void enter(){
@@ -145,7 +145,7 @@ public class ClientState extends State{
             }
             if(lastMsg.length>3){
                 if(lastMsg[2].equals("send")&&!lastMsg[0].equals(name)){
-                    outMsg=lastMsg[0]+" : "+lastMsg[3];
+                    outMsg=lastMsg[0]+":"+lastMsg[3];
                     outText.setText(outMsg);
                 }
             }
