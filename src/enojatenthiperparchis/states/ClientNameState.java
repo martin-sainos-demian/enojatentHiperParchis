@@ -37,13 +37,7 @@ public class ClientNameState extends State{
                     stateNum++;
                 }
                 if(stateNum==1&&!text.equals("")){
-                    if(isSocketAlive(text,5000)){
-                        ready.setText("READY");
-                        stateNum++;
-                    }else{   
-                        ready.setText("FAILED CONNECTION");
-                        stateNum=1;
-                    }
+                    stateNum++;
                 }
                 if(stateNum==2){
                     game.setState(new ClientState(game,nameTxt.text,text));
