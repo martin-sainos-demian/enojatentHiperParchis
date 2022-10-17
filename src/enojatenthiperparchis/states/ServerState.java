@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -31,22 +32,21 @@ public class ServerState extends State{
     Thread get;
     
     public ServerState(Game game){
-        super(game);  
+        super(game); 
         All all=game.getAll();
-        mouse=new Mouse(all,0,this, game.mouseInput);
-        try {			
-            ss = new ServerSocket (5000);
+        try {		
+        ss = new ServerSocket (5000);
             ip=new DisplayText(all,50,50,0,this,InetAddress.getLocalHost().getHostAddress(),all.fonts().sotnNums);
             msg=new DisplayText(all,50,80,0,this,"IP-ADRESS",all.fonts().sotn);
             restart=new DisplayText(all,128,160,0,this,"",all.fonts().sotn);
-        runnin=true;
-        get=new Thread(){
+            runnin=true;
+            get=new Thread(){
             @Override
             public void run(){
                 while(runnin){
                     try {
                         cliente = ss.accept();
-                    }catch(Exception e) { System.out.println("Error de comunicacion"+e);   
+                    }catch(Exception e) { System.out.println("Error de comunicacion b "+e);   
                     runnin=false;}
                     System.out.println("Conexión exitosa");
                     listaCliente.add(cliente);				
@@ -56,25 +56,19 @@ public class ServerState extends State{
             }
         };
         get.start();
-            eclipse=new Eclipse(all,100,all.getScreenHeight()/2,0,this){
-                @Override
-                public void completed(){
-                    try {
-                        runnin=false;
-                        get.stop();
-                        ss.close();
-                        ss=null;
-                    } catch(Exception e) { System.out.println("Error de comunicacion"+e);   
-                    runnin=false;}
-                    restart.setText("EXIT");
-                }
-                @Override
-                public void timmerOff(){
-                    restart.setText("");
-                    System.exit(0);
-                }
-            };
-        }catch(Exception e) { System.out.println("Error de comunicacion"+e);   }
+        eclipse=new Eclipse(all,100,all.getScreenHeight()/2,0,this){
+            @Override
+            public void completed(){
+                restart.setText("EXIT");
+                runnin=false;
+            }
+            @Override
+            public void timmerOff(){
+                restart.setText("");
+                System.exit(0);
+            }
+        };
+    }catch(Exception e) { System.out.println("Error de comunicacion"+e);   }
     }
     
     
@@ -95,5 +89,4 @@ public class ServerState extends State{
         eclipse.render(g);
         mouse.render(g);
     }
-    
 }

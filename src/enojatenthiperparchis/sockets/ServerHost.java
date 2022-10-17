@@ -43,7 +43,7 @@ public class ServerHost extends Thread { //Creamos proceso
 				flujoDOS.writeUTF(mensaje);
 				}
 		          }
-		      catch(Exception e) { System.out.println("Error de comunicacion"+e);
+		      catch(Exception e) { System.out.println("Error de comunicacion a "+e);
                       end();
 		    }
 		}

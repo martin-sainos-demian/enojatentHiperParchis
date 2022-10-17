@@ -5,6 +5,7 @@ import enojatenthiperparchis.All;
 import enojatenthiperparchis.Game;
 import enojatenthiperparchis.object.Boton;
 import enojatenthiperparchis.object.Mouse;
+import enojatenthiperparchis.object.text.InputText;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -13,6 +14,7 @@ public class MenuState extends State {
     private Boton[] botones;
     private All all;
     private int width,height;
+    InputText inText;
     
     public MenuState(Game game){
         super(game);
@@ -58,6 +60,17 @@ public class MenuState extends State {
         all.setTotalWidth(width);
         all.setTotalHeight(height);
         
+        inText=new InputText(all, 0, 0, 0, this, all.fonts().sotn,game.keyInput){
+            @Override
+            public void enter(){
+                game.nextState();
+            }
+            @Override
+            public void esc(){
+                System.exit(0);
+            }
+        };
+                
         audio.loop("title.wav");
     }
     
@@ -69,6 +82,7 @@ public class MenuState extends State {
             b.tick();
         }
         mouse.tick();
+        inText.tick();
     }
 
     @Override
