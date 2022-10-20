@@ -37,7 +37,11 @@ public class ClientNameState extends State{
                     stateNum++;
                 }
                 if(stateNum==1&&!text.equals("")){
-                    stateNum++;
+                    if(isSocketAlive(text,5000)){
+                        stateNum++;
+                    }else{
+                        ready.setText("FAILED CONNECTION");
+                    }
                 }
                 if(stateNum==2){
                     game.setState(new ClientState(game,nameTxt.text,text));
@@ -87,7 +91,7 @@ public class ClientNameState extends State{
         System.out.println("hostName: " + hostName + ", port: " + port);
         try {
             socket.connect(socketAddress, timeout);
-//            socket.close();
+            socket.close();
             isAlive = true;
         } catch (Exception exception) {
             System.out.println(

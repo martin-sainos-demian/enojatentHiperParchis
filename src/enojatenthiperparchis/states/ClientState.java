@@ -15,7 +15,9 @@ import enojatenthiperparchis.sockets.In;
 import enojatenthiperparchis.sockets.Out;
 import java.awt.Graphics;
 import java.io.IOException;
+import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.net.SocketAddress;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -47,7 +49,9 @@ public class ClientState extends State{
         exit=new DisplayText(all,all.getScreenWidth()/2,all.getScreenHeight()/2,0,this,"EXIT?",all.fonts().sotn);
         	      
         try{             
-            skCliente = new Socket (ip, 5000);  						
+            skCliente = new Socket ();
+            SocketAddress socketAddress = new InetSocketAddress(ip, 5000);
+            skCliente.connect(socketAddress);
             outThread =new Out(skCliente,name);
             inThread= new In(skCliente);
 
