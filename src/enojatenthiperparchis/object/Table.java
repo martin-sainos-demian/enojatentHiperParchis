@@ -164,7 +164,7 @@ public class Table extends Thing{
                     for(Casilla y:x){
                         if(y.hueco&&y.canica==null
                                 &&y.y==c.y&&y.x==c.x){
-                            y.setCanica(c);
+                            y.setCanicaNotTell(c);
                         }
                     }
                 }

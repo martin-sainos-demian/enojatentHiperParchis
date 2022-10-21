@@ -27,7 +27,7 @@ public class ServerState extends State{
     DisplayText ip;   
     DisplayText msg;   
     DisplayText restart;
-    Eclipse eclipse;
+    Eclipse eclipseRestart,eclipseExit;
     boolean runnin=false;
     Thread get;
     
@@ -56,11 +56,46 @@ public class ServerState extends State{
             }
         };
         get.start();
-        eclipse=new Eclipse(all,100,all.getScreenHeight()/2,0,this){
+        eclipseRestart=new Eclipse(all,100,all.getScreenHeight()/2,0,this){
+            @Override
+            public void completed(){
+                restart.setText("RESTARTING");
+                try {
+                    get.stop();
+                    if(cte!=null){
+                        cte.stop();
+                        cte.end();
+                        cte=null;
+                    }
+                    runnin=false;
+                    listaCliente=new ArrayList();
+                    ss.close();
+                } catch (Exception e) {
+                    System.out.println("Error reset "+e);
+                }
+            }
+            @Override
+            public void timmerOff(){
+                restart.setText("");
+                game.setState(3);
+            }
+        };
+        eclipseExit=new Eclipse(all,100,all.getScreenHeight()/2+100,0,this){
             @Override
             public void completed(){
                 restart.setText("EXIT");
-                runnin=false;
+                try {
+                    get.stop();
+                    if(cte!=null){
+                        cte.stop();
+                        cte.end();
+                        cte=null;
+                    }
+                    runnin=false;
+                    ss.close();
+                } catch (Exception e) {
+                    System.out.println("Error reset "+e);
+                }
             }
             @Override
             public void timmerOff(){
@@ -77,7 +112,8 @@ public class ServerState extends State{
         ip.tick();
         msg.tick();
         restart.tick();    
-        eclipse.tick();
+        eclipseRestart.tick();
+        eclipseExit.tick();
         mouse.tick();
     }
 
@@ -86,7 +122,8 @@ public class ServerState extends State{
         ip.render(g);
         msg.render(g);
         restart.render(g);
-        eclipse.render(g);
+        eclipseRestart.render(g);
+        eclipseExit.render(g);
         mouse.render(g);
     }
 }

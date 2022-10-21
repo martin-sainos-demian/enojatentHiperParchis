@@ -78,6 +78,15 @@ public class Casilla extends Thing {
             canica.y=y;
             afterSetCanica();
         }
+    }    
+    public void setCanicaNotTell(Canica canicanew){
+        if(hueco){
+            canica=canicanew;
+            canica.assigned=true;
+            canica.x=x;
+            canica.y=y;
+            afterSetCanica();
+        }
     }
     
     public void afterSetCanica(){};
